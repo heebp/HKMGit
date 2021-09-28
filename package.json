@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/qqOwOqq/urban-octo-umbrella/issues"
   },
-  "homepage": "https://github.com/qqOwOqq/urban-octo-umbrella#readme"
+  "homepage": "https://github.com/qqOwOqq/urban-octo-umbrella#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
