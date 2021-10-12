@@ -62,3 +62,13 @@ app.get("/main/signup.html", function(req, res) {
         }
     });
 });
+app.get("/main/cart.html", function(req, res) {
+    fs.readFile(__dirname + '/main/cart.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+});
