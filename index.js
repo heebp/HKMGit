@@ -62,8 +62,8 @@ app.get("/main/signup.html", function(req, res) {
         }
     });
 });
-app.get("/main/cart.html", function(req, res) {
-    fs.readFile(__dirname + '/main/cart.html', function(error, data){
+app.get("/main/favorite.html", function(req, res) {
+    fs.readFile(__dirname + '/main/favorite.html', function(error, data){
         if(error){
             console.log(error);
         }else{
@@ -72,3 +72,43 @@ app.get("/main/cart.html", function(req, res) {
         }
     });
 });
+app.get("/main/chatting.html", function(req, res) {
+    fs.readFile(__dirname + '/main/chatting.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+});
+app.get("/main/review.html", function(req, res) {
+    fs.readFile(__dirname + '/main/review.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+});
+app.get("/main/mystore.html", function(req, res) {
+    fs.readFile(__dirname + '/main/mystore.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
+app.get("/main/v-pills-test.html", function(req, res) {
+    fs.readFile(__dirname + '/main/v-pills-test.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})

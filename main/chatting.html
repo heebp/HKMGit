@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Signin Template · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+    <link href="/chat.css" rel="stylesheet">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <div style="position: sticky; top: 0; " w3-include-html="header.html"></div>
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* Loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* Make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
+                            /* Remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* Exit the function: */
+                    return;
+                }
+            }
+        }
+        includeHTML();
+    </script>
+
+    <div id="contentCover">
+        <div id="room">
+            <div id="roomList">
+                <div id="roomHeader">채팅 방 목록</div>
+                <div id="roomSelect">
+                    <ul class="list-group">
+                        <li class="list-group-item">목록1 </li>
+                        <li class="list-group-item">목록2</li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="chat">
+            <div id="chatHeader">채팅방1</div>
+            <div id="chatLog">
+                <div class="anotherMsg">
+                    <div class="anotherName">상대방 </div>
+                    <div class="msg">안녕하세요</div>
+                </div>
+                <div class="myMsg">
+                    <div class="msg">안녕하세요</div>
+                </div>
+            </div>
+            <form id="chatForm">
+                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                <input type="submit" value="보내기">
+            </form>
+        </div>
+        <div id="map1">지도</div>
+        <div id="map2"></div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAABogX2-7l0xJ_D6EfKEWK3nSe__FlBpw"></script>
+        <button class="btn btn-success btn-sm">나가기</button>
