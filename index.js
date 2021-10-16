@@ -112,3 +112,27 @@ app.get("/main/v-pills-test.html", function(req, res) {
         }
     });
 })
+
+
+
+
+app.get("/main/header-test.html", function(req, res) {
+    fs.readFile(__dirname + '/main/header-test.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+});
+app.get("/main/navbar-test.html", function(req, res) {
+    fs.readFile(__dirname + '/main/navbar-test.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+});
