@@ -26,9 +26,7 @@
           font-size: 3.5rem;
         }
       }
-     .nav-link{
-       ;
-     }
+
     </style>
     
     <!-- Custom styles for this template -->
@@ -38,13 +36,14 @@
   <!--코드 재사용을 위해 HTML include를 사용하려 했으나, 일부 컨텐츠가 레이아웃을 무효화시켰기 때문에 일단 사용 중지, 해결되거나 대체방법 생기면 사용-->
   <!--헤더 : 모든 페이지 공통-->
  <header>
+  <!--sticky-top 적용 안됨-->
   <!--<nav class="navbar navbar-expand-md"...의 형식으로 사용해야되지만 토글버튼이 expand-xx의 형식에 맞춰 사라지게 됨으로 expand-xx 일단 삭제 -->
     <nav class="navbar navbar-dark bg-dark" aria-label="Fourth navbar example">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="#">한경몰</a>
+          <a class="navbar-brand" href="http://localhost:12345/main/main.html">한경몰</a>
           <div class="">
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
             <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
@@ -128,8 +127,19 @@
  </header>
 
 <main>
+  
   <div class="album py-5 bg-light">
     <div class="container">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          최신순
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">관심순</a></li>
+          <li><a class="dropdown-item" href="#">평점순</a></li>
+          <li><a class="dropdown-item" href="#"></a></li>
+        </ul>
+      </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
       <div class="col">
         <div class="card shadow-sm">
