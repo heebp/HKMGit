@@ -1,128 +1,72 @@
-window.onload = getMyLocation;
+window.onload = initMap;
 
 var ourCoords = {
-    latitude : 37.477128,
-    longitude : 126.981734
+    lat : 37.5642135,
+    lng : 127.0016985
 };
 
-function getMyLocation(){
-    if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(displayLocation);
 
-        var watchButton = document.getElementById("watch");
-        watchButton.onclick = watchLocation;
-        var clearWatchButton = document.getElementById("clearWatch");
-        clearWatchButton.onclick = clearWatch;
-    }else {
-        alert("Oops, no geolocation support");
-    }
-}
-
-function computeDistance(startCoords, destCoords){
-    var startLatRads = degreesToRadians(startCoords.latitude);
-    var startLongRads = degreesToRadians(startCoords.longitude);
-    var destLatRads = degreesToRadians(destCoords.latitude);
-    var destLongRads = degreesToRadians(destCoords.longitude);
-
-    var Radius = 6371;
-    var distance = Math.acos(Math.sin(startLatRads)* Math.sin(destLatRads) / Math.cos(startLatRads) 
-    * Math.cos(destLatRads) * Math.cos(startLongRads- destLongRads)) * Radius;
-
-    return distance;
-}
-
-function degreesToRadians(degrees){
-    var radians = (degrees * Math.PI)/180;
-    return radians;
-}
-
-function displayLocation(position){
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    var div = document.getElementById("location");
-
-    var km = computeDistance(position.coords, ourCoords);
-    var distance = document.getElementById("distance");
-
-    if(map == null){
-        showMap(position.coords);
-    }else{
-        scrollMapToPosition(position.coords);
-    }
-}
-
+// In the following example, markers appear when the user clicks on the map.
+// The markers are stored in an array.
+// The user can then click an option to hide, show or delete the markers.
 var map;
-
-function showMap(coords) {
-    var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+var markers = [];
     
-    var mapOptions = {
-        zoom: 10,
-        center: googleLatAndLong,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var mapDiv = document.getElementById("map");
-    map = new google.maps.Map(mapDiv, mapOptions);
+function initMap() {
+ 
 
-    var title = "Your Location";
-    var content = "You are here: " + coords.latitude + ", " + coords.longitude;
-    //자신의 위치 마커 활성화 --> 판매자가 등록한 위치로 마커 설정할 것
-    //addMarker(map, googleLatAndLong, title, content);
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 12,
+    center: ourCoords,
+  });
+  // This event listener will call addMarker() when the map is clicked.
+  map.addListener("click", (event) => {
+    addMarker(event.latLng);
+  },{once : true});
+  // add event listeners for the buttons
+  document
+    .getElementById("show-markers")
+    .addEventListener("click", showMarkers);
+  document
+    .getElementById("hide-markers")
+    .addEventListener("click", hideMarkers);
+  document
+    .getElementById("delete-markers")
+    .addEventListener("click", deleteMarkers);
+  // Adds a marker at the center of the map.
+  //글작성시 설정 
+  addMarker(ourCoords);
 }
 
-function addMarker(map, latlong, title, content){
-    var markerOptions = {
-        position: latlong,
-        map: map,
-        title: title,
-        clickable: true
-    };
-    var marker = new google.maps.Marker(markerOptions);
+// Adds a marker to the map and push to the array.
+function addMarker(position) {
+  const marker = new google.maps.Marker({
+    position,
+    map,
+  });
 
-    var infoWindowOptions = {
-        content: content,
-        position: latlong
-    };
-    var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-
-    google.maps.event.addListener(marker, "click", function(){
-        infoWindow.open(map);
-    });
+  markers.push(marker);
 }
 
-var watchId = null;
-
-function watchLocation(){
-    watchId = navigator.geolocation.watchPosition(displayLocation, displayError);
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
 }
 
-function clearWatch(){
-    if(watchId){
-        navigator.geolocation.clearWatch(watchId);
-        watchId = null;
-    }
+// Removes the markers from the map, but keeps them in the array.
+function hideMarkers() {
+  setMapOnAll(null);
 }
 
-var positionOptions = {
-    enableHighAccuracy: false,
-    timeout: Infinity,
-    maximumAge: 0
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
 }
 
-function watchLocation(){
-    watchId = navigator.geolocation.watchPosition(
-        displayLocation,
-        displayError,
-        {timeout:5000});
-}
-
-function scrollMapToPosition(coords) {
-    var latitude = coords.latitude;
-    var longitude = coords.longitude;
-    var latlong = new google.maps.LatLng(latitude, longitude);
-
-    map.panTo(latlong);
-
-    addMarker(map, latLong, "Your new location", "You moved to: " + latitude +", "+ longitude);
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  hideMarkers();
+  markers = [];
 }

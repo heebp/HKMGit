@@ -102,3 +102,63 @@ app.get("/main/mystore.html", function(req, res) {
         }
     });
 })
+app.get("/main/workspace.html", function(req, res) {
+    fs.readFile(__dirname + '/main/workspace.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
+app.get("/main/board.html", function(req, res) {
+    fs.readFile(__dirname + '/main/board.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
+app.get("/main/article.html", function(req, res) {
+    fs.readFile(__dirname + '/main/article.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
+app.get("/main/setting.html", function(req, res) {
+    fs.readFile(__dirname + '/main/setting.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
+app.get("/main/changing_mystore.html", function(req, res) {
+    fs.readFile(__dirname + '/main/changing_mystore.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
+app.get("/main/sellpage.html", function(req, res) {
+    fs.readFile(__dirname + '/main/sellpage.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
