@@ -162,3 +162,13 @@ app.get("/main/sellpage.html", function(req, res) {
         }
     });
 })
+app.get("/main/product.html", function(req, res) {
+    fs.readFile(__dirname + '/main/product.html', function(error, data){
+        if(error){
+            console.log(error);
+        }else{
+            res.writeHead(200,{'Content-Type': 'text/html'});
+            res.end(data);
+        }
+    });
+})
