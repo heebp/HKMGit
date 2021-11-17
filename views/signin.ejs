@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <%-include('layouts/header');-%>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+
+
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+<script src="js/signin.js" defer></script>
+
+<!-- Custom styles for this template -->
+<link href="css/signin.css" rel="stylesheet">
+<%-include('layouts/scripts');-%>
+
+<body class="text-center">
+
+  <main class="form-signin">
+    <form>
+      <h1 class="h3 mb-3 fw-normal">한경몰</h1>
+      <h2 class="h3 mb-3 fw-normal">Please sign in</h2>
+
+      <div class="form-floating">
+        <input id="id" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput"> id</label>
+      </div>
+      <div class="form-floating">
+        <input id="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button id="signin" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <button id="signup" class="w-100 btn btn-lg btn-warning" type="submit">Sign up</button>
+    </form>
+  </main>
+
+
+
+</body>
+
+</html>

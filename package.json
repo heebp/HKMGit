@@ -4,11 +4,12 @@
   "description": "node.js project",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qqOwOqq/urban-octo-umbrella.git"
+    "url": "git+https://github.com/qqOwOqq/HKMGit.git"
   },
   "keywords": [
     "node.js"
@@ -16,11 +17,14 @@
   "author": "qqOwOqq",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/qqOwOqq/urban-octo-umbrella/issues"
+    "url": "https://github.com/qqOwOqq/HKMGit/issues"
   },
-  "homepage": "https://github.com/qqOwOqq/urban-octo-umbrella#readme",
+  "homepage": "https://github.com/qqOwOqq/HKMGit#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
   }
 }

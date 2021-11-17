@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+    <%-include('layouts/header');-%>
+
+<link href="css/chatting.css" rel="stylesheet">
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10"></script>
+<script src="js/myLoc.js"></script>
+<%-include('layouts/scripts');-%>
+
+<!-- Bootstrap core CSS -->
+<body>
+<%-include('layouts/navbar');-%>
+
+    <div id="location">
+    </div>
+    <div id="distance">
+    </div>
+    <div class="row mt-5">
+        <div class="col-3">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">
+        user1
+        <span class="badge bg-primary rounded-pill">(안읽은 대화 숫자)</span>
+      </a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">
+        user2
+        <span class="badge bg-primary rounded-pill">1</span>
+      </a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">
+        user3
+        <span class="badge bg-primary rounded-pill">3</span>
+      </a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">
+        user4
+        <span class="badge bg-primary rounded-pill">2</span>
+      </a>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방1</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user1</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <div class="button" style="float: right;">
+                                    <label for="image">
+              이미지
+            </label>
+                                </div>
+                                <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+                                <input type="submit" value="보내기" style="float: right;">
+                            </form>
+                        </div>
+                        <!--반응형 적용안됨-->
+                        <div class="col-md-4" id="map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-sm " id=btnout>나가기</button>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방2</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user2</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <input type="submit" value="보내기">
+                            </form>
+                        </div>
+
+                        <div class="col-md-4 map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                            <div class="out">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-sm" id="btnout">나가기</button>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방3</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user3</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <input type="submit" value="보내기">
+                            </form>
+                        </div>
+
+                        <div class="col-md-4 map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                            <button class="btn btn-success btn-sm" id="btnout">나가기</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방4</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user4</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <input type="submit" value="보내기">
+                            </form>
+                        </div>
+
+                        <div class="col-md-4 map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                            <button class="btn btn-success" id="btnout">나가기</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
