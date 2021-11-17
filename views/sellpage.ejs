@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <%-include('layouts/header');-%>
+
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+<script src="dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10"></script>
+<script src="css/myLoc.js"></script>
+<!-- Custom styles for this template -->
+<link href="css/sellpage.css" rel="stylesheet">
+<%-include('layouts/scripts');-%>
+
+
+<body>
+
+    <%-include('layouts/navbar');-%>
+
+
+    <div class="container row" style="float: left; margin: auto;">
+        <div class="col-6" style="float: none; margin:0 auto;">
+            <div class="fw-bold">상품이미지</label>
+                <div class="col-md-5 text-center mb-3">
+                    <img src="..." alt="..." class="img-rounded">
+                    <img src="..." alt="..." class="img-rounded">
+                    <img src="..." alt="..." class="img-rounded">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container row" style="float: right; margin: auto;">
+        <div class="col-3" style="float: none; margin:0 auto;">
+
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    <P> 제목:</P>
+
+                </div>
+
+
+            </div>
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    <P> 가격:</P>
+
+
+                </div>
+            </div>
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    <P> 작성자:</P>
+
+                </div>
+
+
+            </div>
+            <a class="btn btn-primary btn-lg active" href="#" role="button" class="btn btn-danger">구매하기</a>
+            <a class="btn btn-primary btn-lg active" href="#" role="button">채팅하기</a>
+        </div>
+    </div>
+    <p> </p>
+    <div class="title2">
+
+        <p style="height: auto; width: 200%; border-bottom:1px solid rgb(0, 0, 0);  font-size:2em;   margin-top: 20%;">
+            상세 설명</p>
+    </div>
+    <div class=" content ">
+        <p id="content" style="font-size:1.5em;">내용</p>
+    </div>
+    </div>
+    </div>
+</body>
+
+
+
+
+
+
+</html>

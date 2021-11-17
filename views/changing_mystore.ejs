@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <%-include('layouts/header');-%>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="/mystore.css" rel="stylesheet">
+<%-include('layouts/scripts');-%>
+
+  <body>
+    <%-include('layouts/navbar');-%>
+
+<div class="container justify-content-center">
+  <main>
+    <div class="py-5 text-center">
+      <h2>내상점 수정</h2>
+    </div>
+
+    <table class="table-bordered text-center" style="margin-left: auto; margin-right: auto;">
+
+      <tbody>
+      <tr>
+          <th scope="row">
+              <div class="thcell">내상점 사진</div>
+          </th>
+          <td>
+              <div class="tdcell row">
+                <div class="avatar mt-3">
+                  <img src="https://static.nid.naver.com/images/web/user/default.png" alt="..." class="avatar-img rounded-circle" />
+                </div>
+                <div class="align-items-center mb-3">
+                  <label for="formFile" class="form-label">사진 변경</label>
+                  <input class="form-control" type="file" id="formFile">
+                </div>
+              </div>
+          </td>
+      </tr>
+
+      <tr>
+          <th scope>
+              <div class="thcell row"><label for="inpNickname">상점 이름</label></div>
+          </th>
+          <td>
+              <div class="tdcell row">
+                  <p class="contxt_webctrl nickname mt-3">
+                      <input type="text" name="nickname" id="inpNickname" value="상점 이름" style="width:500px">
+                      <input type="text" style="display: none;" >
+                  </p>
+              </div>
+          </td>
+      </tr>
+
+      <tr>
+          <th scope>
+              <div class="thcell"><label for="inpNickname">상점 설명</label></div>
+          </th>
+          <td>
+              <div class="tdcell">
+                  <p class="contxt_webctrl nickname mt-3">
+                      <input type="text" name="nickname" id="inpNickname" value="상점 설명" style="width:500px">
+                      <input type="text" style="display: none;" >
+                  </p>
+              </div>
+          </td>
+      </tr>
+
+      </tbody>
+  </table>
+
+  <div class="d-grid gap-2 col-4 mx-auto">
+    <button class="btn btn-secondary btn-lg mt-4" type="button">수정</button>
+    <button class="btn btn-secondary btn-lg mt-2 mb-3" type="button">취소</button>
+  </div>
+
+
+  </main>
+</div>
+
+
+
+  </body>
+</html>
