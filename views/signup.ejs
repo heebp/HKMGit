@@ -35,11 +35,11 @@
         <p class="lead">감사합니다.</p>
       </div>
       <div>
-        <form class="needs-validation" novalidate>
+        <form method="POST" >
           <div class="row g-3">
             <div class="col-sm-4">
-              <label for="id" class="form-label">아이디</label>
-              <input type="text" class="form-control" id="iden" placeholder="" value="" required>
+              <label for="student_id" class="form-label">아이디</label>
+              <input type="text" name="student_id" class="form-control" id="student_id" placeholder="" value="" required>
 
               <div class="invalid-feedback">
                 Valid id is required.
@@ -52,7 +52,7 @@
 
             <div class="col-sm-4">
               <label for="address2" class="form-label">학교 이메일 </label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <input type="text" name="email" class="form-control" id="lastName" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Valid email is required.
               </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-sm-6">
               <label for="lastName" class="form-label">비밀번호</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <input type="text" name="passwd" class="form-control" id="lastName" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -79,9 +79,9 @@
 
 
             <div class="col-6">
-              <label for="username" class="form-label">이름</label>
+              <label for="name" class="form-label">이름</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="username" placeholder="" required>
+                <input type="text" name="name" class="form-control" id="username" placeholder="" required>
                 <div class="invalid-feedback">
                   Your name is required.
                 </div>
@@ -90,25 +90,26 @@
 
             <div class="col-6">
               <label for="birth" class="form-label">생년월일 <span class="text-muted"></span></label>
-              <input type="email" class="form-control" id="birth" placeholder="xxxx.xx.xx">
+              <input type="text" name="birthday" class="form-control" id="birth" placeholder="xxxx.xx.xx">
             </div>
 
 
             <div class="col-6">
               <label for="address2" class="form-label">닉네임 <span class="text-muted"></span></label>
-              <input type="text" class="form-control" id="address2" placeholder="">
+              <input type="text" name="nickname" class="form-control" id="address2" placeholder="">
             </div>
             <div class="col-6">
               <label for="address2" class="form-label">성별 <span class="text-muted">(Optional)</span></label>
               <input type="text" class="form-control" id="address2" placeholder="">
             </div>
             <div class="col-6">
-              <label for="address2" class="form-label">휴대전화 <span class="text-muted"></span></label>
-              <input type="text" class="form-control" id="address2" placeholder="">
+              <label for="address2" name="phone" class="form-label">휴대전화 <span class="text-muted"></span></label>
+              <input type="text" name="phone" class="form-control" id="address2" placeholder="">
             </div>
             <div class="col-6">
-              <label for="address2" class="form-label">한경대학번 <span class="text-muted"></span></label>
-              <input type="text" class="form-control" id="address2" placeholder="">
+             <!-- <label for="address2" name="student_id" class="form-label">한경대학번 <span class="text-muted"></span></label>
+              <input type="text" name="student_id" class="form-control" id="address2" placeholder="">
+            -->
             </div>
 
 

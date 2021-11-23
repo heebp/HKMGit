@@ -1,11 +1,18 @@
 const express = require('express')
 var router = express.Router()
+var app = express()
 
+app.use(express.urlencoded({ extended: true }) );
+app.use(express.json() );
 var signup= require('./signup/signup')
 var signin= require('./signin/signin')
 var main= require('./main/main')
 var signout= require('./signout/signout')
-router.post("/signin",signin.process.signin)
+
+router.post('/signup', signup.register);
+router.post('/signin', signin.login)
+
+
 router.get('/',main)
 router.get('/main',main)
 
