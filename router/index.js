@@ -6,9 +6,9 @@ const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require('cookie-parser');
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
-var signup= require('./signup/signup')
-var signin= require('./signin/signin')
-var signout= require('./signout/signout')
+var signup= require('./auth/signup')
+var signin= require('./auth/signin')
+var signout= require('./auth/signout')
 var sessionStore = new MySQLStore(options)
 var options ={
     host:"localhost",
