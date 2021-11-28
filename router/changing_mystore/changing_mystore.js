@@ -1,0 +1,40 @@
+const mysql = require('mysql'); 
+const express = require('express')
+var app = express()
+var session = require('express-session')
+const MySQLStore = require("express-mysql-session")(session); 
+const cookieParser = require('cookie-parser')
+const connection = mysql.createConnection({ 
+    host:'localhost', 
+    user:'root', 
+    password:'0000', 
+    port:3306, 
+    database:'new_schema' 
+});
+app.use(express.urlencoded({ extended: true }) );
+app.use(express.json() );
+exports.changing_mystore = function (req, res) {
+    console.log("req", req.body);
+    console.log('내상점 만드는 중')
+    var mystore = {
+        "student_id": res.body.student_id,
+        "store_name": req.body.store_name,
+        "store_description": req.body.store_description,
+        "store_image":req.body.store_image,
+    }
+    connection.query('INSERT INTO mystore SET ?' , mystore, function (error, results, fields) {
+        if (error) {
+            console.log("error ocurred", error);
+            res.send({
+                "code" : 400,
+                "failed": "error ocurred"
+            })
+        } else {
+            console.log('The solution is: ', results);
+            res.send({
+                "code": 200,
+                "success": "user registered sucessfully"
+            });
+        }
+    });    
+}
