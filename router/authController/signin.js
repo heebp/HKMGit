@@ -2,7 +2,6 @@ const mysql = require('mysql');
 const express = require('express')
 const session = require('express-session');
 const UserModel = require('../../models/User')
-const FileStore = require('session-file-store')(session);
 var app = express()
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
@@ -27,12 +26,11 @@ exports.login = function (req, res) {
                     });
                     */
                     req.session.is_logined = true;
-                    req.session.nickname = results.nickname;
-                    req.session.id = results.id;
-                    req.session.pw = results.passwd;
+                    req.session.nickname =  results[0].nickname;
+                    req.session.member_id = id;
                     req.session.save(function(){ // 세션 스토어에 적용하는 작업
                         res.render('navbar',{ // 정보전달
-                            id : results[0].id,
+                            id : req.session.id,
                             is_logined : true
                         });
                     });
