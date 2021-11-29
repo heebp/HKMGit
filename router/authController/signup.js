@@ -19,16 +19,18 @@ exports.register = function (req, res) {
     new UserModel().createUser(memberInfo,(error,results)=>{
         if (error) {
             console.log("error ocurred", error);
-            res.send({
+            /*res.send({
                 "code" : 400,
                 "failed": "error ocurred"
             })
+            */
         } else {
             console.log('The solution is: ', results);
-            res.send({
+            /*res.send({
                 "code": 200,
                 "success": "user registered sucessfully"
             });
+            */
             res.redirect("main")
         }
     });    
