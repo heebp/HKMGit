@@ -6,15 +6,17 @@ const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require('cookie-parser');
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
-var signup= require('./auth/signup')
-var signin= require('./auth/signin')
-var signout= require('./auth/signout')
+var signup= require('./authController/signup')
+var signin= require('./authController/signin')
+var signout= require('./authController/signout')
+var boards= require('./boardsController/boards')
+var pagination= require('./boardsController/pagination')
 var sessionStore = new MySQLStore(options)
 var options ={
     host:"localhost",
     user:"root",
     password:'0000',
-    database:'new_schema'
+    database:'hkm_db'
 }
 app.use(session({
     secret: 'blackzat', // 데이터를 암호화 하기 위해 필요한 옵션
@@ -30,7 +32,8 @@ function commonRes(layout, req, res) {
     if(req.session.is_logined == true){
         res.render(layout,{
             is_logined : req.session.is_logined,
-            name : req.session.name
+            member_id : req.session.member_id,
+            nickname : req.session.nickname,
         });
  
     }else{
@@ -39,6 +42,8 @@ function commonRes(layout, req, res) {
         });
     }
   }
+  
+
 
 /*
 app.use(function(req, res, next){
@@ -48,13 +53,20 @@ app.use(function(req, res, next){
 */
 router.post('/signup', signup.register)
 router.post('/signin', signin.login)
+router.post('/boards',boards.boards)
+router.get('/',pagination.pagination)
+router.get('/main',pagination.pagination)
+/*router.get('/',(req,res)=>{
+    commonRes('main', req,res)
+    pagination.pagination
 
-router.get('/',(req,res)=>{
-   commonRes('main', req, res)
 })
 router.get('/main',(req,res)=>{
     commonRes('main', req, res)
+    pagination.pagination
+
 })
+*/
 router.get('/signout',(req,res)=>{
     console.log('로그아웃 성공');
     req.session.destroy(function(err){
@@ -67,10 +79,12 @@ router.get('/article',(req,res)=>{
     
     commonRes('article', req, res)
 })
-router.get('/board',(req,res)=>{
-    commonRes('board', req, res)
+router.get('/boards',(req,res)=>{
+    member_id=req.session.id
+    commonRes('boards', req, res)
 })
 router.get('/changing_mystore',(req,res)=>{
+    id=req.session.id
     commonRes('changing_mystore', req, res)
 })
 router.get('/chatting',(req,res)=>{

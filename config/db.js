@@ -5,6 +5,6 @@ const connection = mysql.createConnection({
     user:'root', 
     password:'0000', 
     port:3306, 
-    database:'new_schema' 
+    database:'hkm_db' 
 });
 module.exports = connection

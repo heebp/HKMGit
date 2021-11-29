@@ -16,7 +16,7 @@ var options ={
     host:"localhost",
     user:"root",
     password:'0000',
-    database:'new_schema'
+    database:'hkm_db'
 }
 var sessionStore = new MySQLStore(options)
 app.use(session({
