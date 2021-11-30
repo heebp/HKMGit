@@ -24,6 +24,7 @@ exports.register = function (req, res) {
                 "failed": "error ocurred"
             })
             */
+           res.redirect("signup")
         } else {
             console.log('The solution is: ', results);
             /*res.send({
