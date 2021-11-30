@@ -11,12 +11,13 @@ var signin= require('./authController/signin')
 var signout= require('./authController/signout')
 var boards= require('./boardsController/boards')
 var pagination= require('./boardsController/pagination')
+var changing_mystore= require('./mystoreController/changing_mystore')
 var sessionStore = new MySQLStore(options)
 var options ={
     host:"localhost",
     user:"root",
     password:'0000',
-    database:'hkm_db'
+    database:'hkm_db2'
 }
 app.use(session({
     secret: 'blackzat', // 데이터를 암호화 하기 위해 필요한 옵션
@@ -54,6 +55,7 @@ app.use(function(req, res, next){
 router.post('/signup', signup.register)
 router.post('/signin', signin.login)
 router.post('/boards',boards.boards)
+router.post('/changing_mystore',changing_mystore.changing_mystore)
 router.get('/',pagination.pagination)
 router.get('/main',pagination.pagination)
 /*router.get('/',(req,res)=>{
@@ -80,11 +82,9 @@ router.get('/article',(req,res)=>{
     commonRes('article', req, res)
 })
 router.get('/boards',(req,res)=>{
-    member_id=req.session.id
     commonRes('boards', req, res)
 })
 router.get('/changing_mystore',(req,res)=>{
-    id=req.session.id
     commonRes('changing_mystore', req, res)
 })
 router.get('/chatting',(req,res)=>{
