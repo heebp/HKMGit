@@ -12,7 +12,7 @@ var options ={
     host:"localhost",
     user:"root",
     password:'0000',
-    database:'hkm_db'
+    database:'hkm_db2'
 }
 app.use(session({
     secret: 'blackzat', // 데이터를 암호화 하기 위해 필요한 옵션
@@ -22,7 +22,7 @@ app.use(session({
 }));
 exports.pagination = function (req, res) {
     new BoardsModel().getBoardByNo( (error, results) => {
-        console.log(results[0].title)
+        //console.log(results[0].title) !!주석처리 안할시 판매글 없으면 오류발생!!
         if (req.session.is_logined == true) {
             if (error) {
                 console.log("error ocurred", error);
