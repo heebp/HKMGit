@@ -21,8 +21,8 @@ app.use(session({
     store :  sessionStore// 세션이 데이터를 저장하는 곳
 }));
 exports.pagination = function (req, res) {
-    new BoardsModel().getBoardByNo( (error, results) => {
-        //console.log(results[0].title) !!주석처리 안할시 판매글 없으면 오류발생!!
+    new BoardsModel().getBoard( (error, results) => {
+        //console.log(results) //!!주석처리 안할시 판매글 없으면 오류발생!!
         if (req.session.is_logined == true) {
             if (error) {
                 console.log("error ocurred", error);
@@ -36,8 +36,7 @@ exports.pagination = function (req, res) {
                     is_logined: req.session.is_logined,
                     member_id: req.session.member_id,
                     nickname: req.session.nickname,
-
-                    //view
+                    //views
                 });
             }
         } else {
