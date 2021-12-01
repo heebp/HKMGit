@@ -15,21 +15,21 @@ exports.changing_mystore = function (req, res) {
     }
     new MystoreModel().changeMystore( mystoreContent,( error, results) =>{
         if (error) {
-            console.log("error ocurred", error);
+            //console.log("error ocurred", error);
             /*res.send({
                 "code" : 400,
                 "failed": "error ocurred"
             })
             */
         } else {
-            console.log('The solution is: ', results);
+            //console.log('The solution is: ', results);
             /*
             res.send({
                 "code": 200,
                 "success": "changing_mystore sucessfully"
             });
             */
-            res.redirect("mystore")
+            res.redirect("/mystore")
         }
     });    
 }
