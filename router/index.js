@@ -11,7 +11,9 @@ var signin= require('./authController/signin')
 var signout= require('./authController/signout')
 var boards= require('./boardsController/boards')
 var pagination= require('./boardsController/pagination')
-var changing_mystore= require('./mystoreController/changing_mystore')
+var changing_mystore= require('./mystoreController/changeMystore')
+var getMystore= require('./mystoreController/getMystore')
+var product= require('./boardsController/product')
 var sessionStore = new MySQLStore(options)
 var options ={
     host:"localhost",
@@ -39,7 +41,8 @@ function commonRes(layout, req, res) {
  
     }else{
         res.render(layout,{
-            is_logined : false
+            is_logined : false,
+            member_id : req.session.member_id
         });
     }
   }
@@ -54,10 +57,16 @@ app.use(function(req, res, next){
 */
 router.post('/signup', signup.register)
 router.post('/signin', signin.login)
-router.post('/boards',boards.boards)
-router.post('/changing_mystore',changing_mystore.changing_mystore)
+router.post('/product',boards.boards)
+router.put('/mystore/:member_id',changing_mystore.changing_mystore)
 router.get('/',pagination.pagination)
-router.get('/main',pagination.pagination)
+router.get('/boards',pagination.pagination)
+router.get('/mystore',getMystore.getMystore)
+router.get('/boards/:board_no',product.product)
+router.get('/boards',(req,res)=>{
+    console.log("서치 라우터 작동")
+})
+
 /*router.get('/',(req,res)=>{
     commonRes('main', req,res)
     pagination.pagination
@@ -73,7 +82,7 @@ router.get('/signout',(req,res)=>{
     console.log('로그아웃 성공');
     req.session.destroy(function(err){
         // 세션 파괴후 할 것들
-        res.redirect('/main');
+        res.redirect('/');
     });
 
 });
@@ -81,10 +90,12 @@ router.get('/article',(req,res)=>{
     
     commonRes('article', req, res)
 })
-router.get('/boards',(req,res)=>{
+
+router.get('/product',(req,res)=>{
     commonRes('boards', req, res)
 })
-router.get('/changing_mystore',(req,res)=>{
+
+router.get('/mystore/:member_id',(req,res)=>{
     commonRes('changing_mystore', req, res)
 })
 router.get('/chatting',(req,res)=>{
@@ -93,12 +104,16 @@ router.get('/chatting',(req,res)=>{
 router.get('/favorite',(req,res)=>{
     commonRes('favorite', req, res)
 })
+/*
 router.get('/mystore',(req,res)=>{
     commonRes('mystore', req, res)
 })
-router.get('/product',(req,res)=>{
+*/
+/*
+router.get('/boards/:board_no',(req,res)=>{
     commonRes('product', req, res)
 })
+*/
 router.get('/review',(req,res)=>{
     commonRes('review', req, res)
 })
