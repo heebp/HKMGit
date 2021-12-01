@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 var session = require('express-session')
+var methodOverride = require('method-override');
 const indexRouter = require('./router/index');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
@@ -9,6 +10,7 @@ const cookieParser = require('cookie-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }) );
 app.use(bodyParser.json() );
+app.use(methodOverride('_method'));
 app.set('view engine','ejs')
 app.use(express.static('public'))
 
