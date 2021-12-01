@@ -36,7 +36,7 @@ exports.boards = function (req, res) {
                 "success": "user registered sucessfully"
             });
             */
-            res.redirect("main")
+            res.redirect("/")
         }
     });    
     

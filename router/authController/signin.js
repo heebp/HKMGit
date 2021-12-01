@@ -34,7 +34,7 @@ exports.login = function (req, res) {
                             is_logined : true
                         });
                     });
-                    res.redirect("main")
+                    res.redirect("/")
                 } else {
                     /*
                     res.send({
