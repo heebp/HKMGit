@@ -35,15 +35,17 @@
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
+                <input class="form-control" id="board_no" name="baord_no" class="board_no" type="hidden"  value="<%= board_no %>">
+
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="http://image.yes24.com/goods/58154784/XL" class="d-block w-100" alt="...">
+                            <img src="<%= product_data[0].image %>" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="http://image.yes24.com/goods/58154784/XL" class="d-block w-100" alt="...">
+                            <img src="<%= product_data[0].iamge %>" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="http://image.yes24.com/goods/58154784/XL" class="d-block w-100" alt="...">
+                            <img src="<%= product_data[0].image %>" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -62,9 +64,9 @@
                         <div class="card shadow-sm">
                 
                           <div class="card-body">
-                            <h4 class="card-title pb-2">제목</h4>
-                            <h6 class="card-text pt-3 pb-2 border-top">가격</h6>
-                            <p class="card-title pt-3 pb-5 border-top">내용</p>
+                            <h4 class="card-title pb-2"><%= product_data[0].title %></h4>
+                            <h6 class="card-text pt-3 pb-2 border-top"><%= product_data[0].price %></h6>
+                            <p class="card-title pt-3 pb-5 border-top"><%= product_data[0].content %></p>
                             <small class="text-muted">9 mins</small>
                           </div>
                         </div>

@@ -19,7 +19,6 @@
     </style>
     
     <!-- Custom styles for this template -->
-    <link href="/mystore.css" rel="stylesheet">
 <%-include('layouts/scripts');-%>
 
   <body>
@@ -30,7 +29,7 @@
     <div class="py-5 text-center">
       <h2>내상점 수정</h2>
     </div>
-    <form method="POST" >
+    <form action="/mystore/<%= member_id %>?_method=put" method="post">
       <input class="form-control" id="member_id" name="member_id" class="member_id" type="hidden"  value="<%= member_id %>">
     <table class="table-bordered text-center" style="margin-left: auto; margin-right: auto;">
 
