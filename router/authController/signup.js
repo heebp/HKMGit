@@ -1,20 +1,14 @@
 const mysql = require('mysql'); 
 const express = require('express')
+const UserModel = require('../../models/User')
 var app = express()
-const connection = mysql.createConnection({ 
-    host:'localhost', 
-    user:'root', 
-    password:'0000', 
-    port:3306, 
-    database:'new_schema' 
-});
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
 exports.register = function (req, res) {
     // console.log("req", req.body);
     console.log('회원가입 하는중')
     var today = new Date();
-    var member = {
+    var memberInfo = {
         "id": req.body.id,
         "student_id": req.body.student_id,
         "nickname": req.body.nickname,
@@ -22,19 +16,24 @@ exports.register = function (req, res) {
         "reg_date": today,
         "email": req.body.email
     }
-    connection.query('INSERT INTO member SET ?' , member, function (error, results, fields) {
+    new UserModel().createUser(memberInfo,(error,results)=>{
         if (error) {
             console.log("error ocurred", error);
-            res.send({
+            /*res.send({
                 "code" : 400,
                 "failed": "error ocurred"
             })
+            */
+           res.redirect("signup")
         } else {
             console.log('The solution is: ', results);
-            res.send({
+            /*res.send({
                 "code": 200,
                 "success": "user registered sucessfully"
             });
+            */
+            res.redirect("/")
         }
     });    
+    
 }

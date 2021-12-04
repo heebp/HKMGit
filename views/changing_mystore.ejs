@@ -19,7 +19,6 @@
     </style>
     
     <!-- Custom styles for this template -->
-    <link href="/mystore.css" rel="stylesheet">
 <%-include('layouts/scripts');-%>
 
   <body>
@@ -30,7 +29,8 @@
     <div class="py-5 text-center">
       <h2>내상점 수정</h2>
     </div>
-
+    <form action="/mystore/<%= member_id %>?_method=put" method="post">
+      <input class="form-control" id="member_id" name="member_id" class="member_id" type="hidden"  value="<%= member_id %>">
     <table class="table-bordered text-center" style="margin-left: auto; margin-right: auto;">
 
       <tbody>
@@ -45,12 +45,11 @@
                 </div>
                 <div class="align-items-center mb-3">
                   <label for="formFile" class="form-label">사진 변경</label>
-                  <input class="form-control" type="file" id="formFile">
+                  <input class="form-control" class="store_image" type="file" id="formFile">
                 </div>
               </div>
           </td>
       </tr>
-
       <tr>
           <th scope>
               <div class="thcell row"><label for="inpNickname">상점 이름</label></div>
@@ -58,7 +57,7 @@
           <td>
               <div class="tdcell row">
                   <p class="contxt_webctrl nickname mt-3">
-                      <input type="text" name="nickname" id="inpNickname" value="상점 이름" style="width:500px">
+                      <input type="text" name="store_name" id="inpNickname" value="상점 이름" style="width:500px">
                       <input type="text" style="display: none;" >
                   </p>
               </div>
@@ -72,7 +71,7 @@
           <td>
               <div class="tdcell">
                   <p class="contxt_webctrl nickname mt-3">
-                      <input type="text" name="nickname" id="inpNickname" value="상점 설명" style="width:500px">
+                      <input type="text" name="store_description" id="inpNickname" value="상점 설명" style="width:500px">
                       <input type="text" style="display: none;" >
                   </p>
               </div>
@@ -83,7 +82,8 @@
   </table>
 
   <div class="d-grid gap-2 col-4 mx-auto">
-    <button class="btn btn-secondary btn-lg mt-4" type="button">수정</button>
+    <button class="btn btn-secondary btn-lg mt-4" type="submit">수정</button>
+  </form>
     <button class="btn btn-secondary btn-lg mt-2 mb-3" type="button">취소</button>
   </div>
 
