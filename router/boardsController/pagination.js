@@ -12,7 +12,7 @@ var options ={
     host:"localhost",
     user:"root",
     password:'0000',
-    database:'hkm_db2'
+    database:'hkm_db4'
 }
 app.use(session({
     secret: 'blackzat', // 데이터를 암호화 하기 위해 필요한 옵션

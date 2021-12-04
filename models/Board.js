@@ -22,7 +22,8 @@ class Board {
         db.query(sql,callback)
     }
     getBoardByNo =(board_no, callback)=>{
-        var sql = `SELECT * FROM ${table} where board_no = "${board_no}"`
+        var sql = `SELECT * FROM ${table} where board_no = "${board_no}";`
+
         db.query(sql,callback)
     }
 }
