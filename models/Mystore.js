@@ -10,7 +10,8 @@ class Mystore {
     }
     getMystoreById =(member_id, callback)=>{
         //console.log(member)
-        var sql = `SELECT * FROM ${table} where member_id = "${member_id}"`
+        var sql = `SELECT * FROM ${table} where member_id = "${member_id}";`+
+        `SELECT * FROM board where member_id ="${member_id}";`
         db.query(sql,callback)
     }
 
