@@ -65,7 +65,7 @@
                 
                           <div class="card-body">
                             <h4 class="card-title pb-2"><%= product_data[0].title %></h4>
-                            <h6 class="card-text pt-3 pb-2 border-top"><%= product_data[0].price %></h6>
+                            <h6 class="card-text pt-3 pb-2 border-top"><%= product_data[0].price %> 원</h6>
                             <p class="card-title pt-3 pb-5 border-top"><%= product_data[0].content %></p>
                             <small class="text-muted">9 mins</small>
                           </div>
@@ -73,7 +73,10 @@
                     </div>
 
                     <div class="btn-group mt-3" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary">찜하기</button>
+                      <form method="POST" >
+                        <input type="hidden" class="form-control" id="member_id" name="member_id" placeholder=""value="<%= member_id %>">
+                        <button type="submit" class="btn btn-secondary" onclick = "location.href = '/favorite/<%= member_id %>' ">찜하기</button>
+                      </form>
                         <button type="button" class="btn btn-secondary">채팅</button>
                     </div>
 
@@ -88,7 +91,8 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="name mt-2">
-                                          <h5>상점 이름</h5>
+                                          <h5><%= product_data[0].member_id %></h5>
+                                          
                                         </div>
                                     </div>
                                 </div>
