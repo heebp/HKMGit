@@ -11,7 +11,7 @@ class Mystore {
     getMystoreById =(member_id, callback)=>{
         //console.log(member)
         var sql = `SELECT * FROM ${table} where member_id = "${member_id}";`+
-        `SELECT * FROM board where member_id ="${member_id}";`
+        `SELECT * FROM board where member_id ="${member_id}" ORDER BY date DESC;`
         db.query(sql,callback)
     }
 

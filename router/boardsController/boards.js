@@ -5,17 +5,28 @@ const BoardsModel = require('../../models/Board')
 var app = express()
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
-
+var urlArr = new Array();
+var images
 exports.boards = function (req, res) {
     var today = new Date();
-
+//console.log("파일"+req.file.filename)
+//console.log(req.files)
+for(var i=0;i<req.files.length; i++){
+    urlArr.push("/images/"+req.files[i].filename)
+    console.log(urlArr[i])
+    images += '|'+ urlArr[i]
+}
+if(images == null)
+images = "none"
+//console.log(image)
     var boardsContent = {
     "member_id" : req.body.member_id,
     "sub_category_scategory_no" : req.body.sub_category_scategory_no,
     "nickname" : req.body.nickname,
     "title" : req.body.title,
     "content" : req.body.content,
-    "image" : req.body.image,
+    "image" : images,
+    //"image": req.body.image,
     "date" : today,
     "price" : req.body.price
     //var views

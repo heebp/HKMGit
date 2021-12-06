@@ -25,7 +25,7 @@
                                         <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                                             <div class="mask waves-effect waves-light">
                                                 <!--상품 이미지-->
-                                                <img class="img-fluid w-100" src="ㅁㄴㅇ">
+                                                <img class="img-fluid w-50" src="<%= image[i] %>">
                                             </div>
                                         </div>
                                     </div>
@@ -40,8 +40,9 @@
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <a href="#!" type="button"
-                                                        class="card-link-secondary small mr-3">삭제 </a>
+                                                    <form action="/favorite/<%= member_id %>/<%= data[i].board_no%>?_method=delete" method="POST">
+                                                        <button class="btn btn-secondary btn-sm mt-4" type="submit">삭제</button>
+                                                        </form>
                                                 </div>
                                                 <p class="mb-0"><span><strong><%= data[i].price %> 원</strong></span></p>
                                             </div>
@@ -53,17 +54,6 @@
                                 <% } %>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <!-- Card -->
-                        <!--
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                map? or 위치정보? or 삭제
-                            </div>
-                        </div>
-                    -->
                     </div>
                 </div>
             </section>
