@@ -9,22 +9,33 @@ class Board {
         var sql = `INSERT INTO ${table} SET ?`
         db.query(sql,boardsContent,callback)
     }
-    getBoard =( callback)=>{
-        var sql = `SELECT * FROM ${table} `
+    //
+    getBoard =(sortSearch, callback)=>{
+        var sql = `SELECT * FROM ${table} ${sortSearch}  ORDER BY date DESC;`
         db.query(sql,callback)
     }
-    getBoardBySearch =( query,callback)=>{
-        var sql = `SELECT title,content FROM ${table} WHERE title LIKE ?`
-        db.query(sql,'%'+query+'%',callback)
-    }
+    
     getBoardById =(mystoreContent, callback)=>{
         var sql = `SELECT * FROM ${table} where member_id = "${mystoreContent.member_id}"`
         db.query(sql,callback)
     }
     getBoardByNo =(board_no, callback)=>{
-        var sql = `SELECT * FROM ${table} where board_no = "${board_no}";`
-
+        var sql = `select * from board join mystore on board.member_id = mystore.member_id where board_no = "${board_no}";`+
+        `select category_name, scategory_name from sub_category join board on sub_category_scategory_no = scategory_no join main_category on main_category_category_no = category_no where board_no = ${board_no};`
         db.query(sql,callback)
+    }
+    pageAll = async (start, end) => {
+        try {
+         const sql = `SELECT * FROM boards ${start}, ${end}`;
+         const results = await pool.queryParam(sql);
+         if (results.length === 0) {
+            return false;
+          } else {
+            return results;
+          }
+        } catch (err) {
+          throw err;
+        }
     }
 }
 module.exports = Board
