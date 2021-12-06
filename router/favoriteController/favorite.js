@@ -29,7 +29,7 @@ exports.favorite = function (req, res) {
                 "success": "user registered sucessfully"
             });
             */
-            res.redirect("/favorite")
+            res.redirect("/favorite/:id")
         }
     });    
     
