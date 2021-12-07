@@ -8,11 +8,42 @@ const crypto = require('crypto');
 const MySQLStore = require("express-mysql-session")(session); // 세션을 파일에 저장
 const cookieParser = require('cookie-parser');
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+app.get('/chatting', function(req, res) {
+    res.render(__dirname + '/views/chatting.ejs');
+});
+
+// namespace /chat에 접속한다.
+var chat = io.of('/chat').on('connection', function(socket) {
+    socket.on('chat message', function(data) {
+        console.log('message from client: ', data);
+
+        var name = socket.name = data.name;
+        var room = socket.room = data.room;
+
+        // room에 join한다
+        socket.join(room);
+        // room에 join되어 있는 클라이언트에게 메시지를 전송한다
+        chat.to(room).emit('chat message', data.msg);
+    });
+});
+
+server.listen(3000, function() {
+    console.log('Socket IO server listening on port 3000');
+});
+
+
+
+
+
+
 
 var options = {
     host: "localhost",
@@ -29,11 +60,6 @@ app.use(session({
 }));
 app.use(indexRouter)
 
-let port = 12345
-
-app.listen(port, function() {
-    console.log("Server started listening at localhost: " + port);
-});
 
 
 

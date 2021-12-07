@@ -20,7 +20,7 @@ var product = require('./boardsController/product')
 var review = require('./reviewController/writeReview')
 var favorite = require('./favoriteController/favorite')
 var deleteFavorite = require('./favoriteController/deleteFavorite')
-var chat = require('./chat')
+var chatting = require('./authController/chat')
 const upload = multer({
     storage: multer.diskStorage({
         // set a localstorage destination
@@ -99,7 +99,10 @@ router.get('/mystore/:member_id', getMystore.getMystore)
 router.get('/boards/:board_no', product.product)
 router.get('/favorite/:member_id', getFavorite.getFavorite)
 router.delete('/favorite/:member_id/:board_no', deleteFavorite.deleteFavorite)
-router.get('/chatting', chat.chat)
+
+
+//commonRes('chatting', req, res)
+
 
 /*router.get('/',(req,res)=>{
     commonRes('main', req,res)
