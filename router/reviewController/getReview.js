@@ -8,7 +8,6 @@ app.use(express.json() );
 
 exports.getReview = function (req, res) {
     new BoardsModel().getReviewByID( (error, results) => {
-        //console.log(results) //!!주석처리 안할시 판매글 없으면 오류발생!!
         if (req.session.is_logined == true) {
             if (error) {
                 console.log("error ocurred", error);

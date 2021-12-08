@@ -23,7 +23,7 @@ app.use(session({
 var mnt = new Array()
 var sort, search, sortSearch
 exports.pagination = function (req, res) {
-    //console.log(req.query.search)
+    console.log("?")
     if (req.query.search) {
         search = "where title like '%" + req.query.search + "%' or content like '%" + req.query.search + "%'"
     }
@@ -58,33 +58,34 @@ exports.pagination = function (req, res) {
                         image_split = results[i].image.split("|");
                         board_image_split += image_split[1] + "|"
                     }
-                    /*
-                    console.log(image_split) 
-                    console.log(image_split[1])
-                    console.log(board_image_split)
-                    */
+
                     board_image_split = board_image_split.split("|")
                 }
-                //console.log(board_image_split)
-                //console.log(results)
                 search =
                     sort =
                     sortSearch =
-                    res.render('main', { // 정보전달
+                    res.render('main', {
                         data: results,
                         moment: mnt,
                         image: board_image_split,
                         is_logined: req.session.is_logined,
                         member_id: req.session.member_id,
                         nickname: req.session.nickname,
-                        //views
                     });
             }
         } else {
+            for (var i = 0; i < results.length; i++) {
+                image_split = results[i].image.split("|");
+                board_image_split += image_split[1] + "|"
+            }
+            if (results.length != 0) {
+                board_image_split = board_image_split.split("|")
+            }
+            console.log(results.image)
             res.render('main', {
                 data: results,
                 moment: mnt,
-                image: image_split,
+                image: board_image_split,
                 is_logined: false
             });
         }

@@ -4,8 +4,6 @@ const table = 'review';
 class Review {
 
     createReview =(reviewContent, callback)=>{
-        //console.log(member)
-
         var sql = `INSERT INTO ${table} SET ?`
         db.query(sql,reviewContent,callback)
     }

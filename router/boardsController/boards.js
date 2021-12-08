@@ -5,10 +5,11 @@ const BoardsModel = require('../../models/Board')
 var app = express()
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
-var urlArr = new Array();
-var images
+
 exports.boards = function (req, res) {
     var today = new Date();
+    var urlArr = new Array();
+    var images
 //console.log("파일"+req.file.filename)
 //console.log(req.files)
 for(var i=0;i<req.files.length; i++){
@@ -42,11 +43,7 @@ images = "none"
             })
         } else {
             console.log('The solution is: ', results);
-            /*res.send({
-                "code": 200,
-                "success": "user registered sucessfully"
-            });
-            */
+
             res.redirect("/")
         }
     });    

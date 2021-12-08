@@ -4,13 +4,12 @@ const table = 'board';
 class Board {
 
     createBoard =(boardsContent, callback)=>{
-        //console.log(member)
-
         var sql = `INSERT INTO ${table} SET ?`
         db.query(sql,boardsContent,callback)
     }
     //
     getBoard =(sortSearch, callback)=>{
+      console.log(sortSearch)
         var sql = `SELECT * FROM ${table} ${sortSearch}  ORDER BY date DESC;`
         db.query(sql,callback)
     }

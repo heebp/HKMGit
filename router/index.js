@@ -8,6 +8,8 @@ const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require('cookie-parser');
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 var signup= require('./authController/signup')
 var signin= require('./authController/signin')
 var signout= require('./authController/signout')
@@ -20,6 +22,7 @@ var product= require('./boardsController/product')
 var review= require('./reviewController/writeReview')
 var favorite= require('./favoriteController/favorite')
 var deleteFavorite= require('./favoriteController/deleteFavorite')
+var chatting = require('./authController/chat')
 const upload = multer({
     storage: multer.diskStorage({
       // set a localstorage destination
@@ -31,6 +34,8 @@ const upload = multer({
         cb(null, new Date().valueOf() + path.extname(file.originalname));
       },
     }),
+    //limits: { fileSize: 1024 * 1024 }
+
   });
 
 var sessionStore = new MySQLStore(options)
@@ -58,33 +63,6 @@ router.use("*",(req,res,next)=>{
     next()
 })
 
-/*function commonRes(layout, req, res) {
-    console.log('페이지 작동');
-    console.log(req.session);
-    if(req.session.is_logined == true){
-        res.render(layout,{
-            is_logined : req.session.is_logined,
-            member_id : req.session.member_id,
-            nickname : req.session.nickname,
-        });
- 
-    }else{
-        res.render(layout,{
-            is_logined : false,
-            member_id : req.session.member_id
-        });
-    }
-  }
-  */
-  
-
-
-/*
-app.use(function(req, res, next){
-    res.locals.items = "Value";
-    next();
-});
-*/
 router.post('/signup', signup.register)
 router.post('/signin', signin.login)
 router.post('/review',review.review)
@@ -99,79 +77,47 @@ router.get('/boards/:board_no',product.product)
 router.get('/favorite/:member_id',getFavorite.getFavorite)
 router.delete('/favorite/:member_id/:board_no', deleteFavorite.deleteFavorite)
 
-/*router.get('/',(req,res)=>{
-    commonRes('main', req,res)
-    pagination.pagination
-
-})
-router.get('/main',(req,res)=>{
-    commonRes('main', req, res)
-    pagination.pagination
-
-})
-*/
 router.get('/product',(req,res)=>{
     res.render('boards')
-    //commonRes('review', req, res)
 })
 router.get('/signout',(req,res)=>{
     console.log('로그아웃 성공');
     is_logined=false,
     req.session.destroy(function(err){
-        // 세션 파괴후 할 것들
         res.redirect('/');
     });
 
 });
 router.get('/mystore/:member_id/form',(req,res)=>{
     res.render('changing_mystore')
-    //commonRes('review', req, res)
 })
 router.get('/review',(req,res)=>{
     res.render('review')
-    //commonRes('review', req, res)
 })
 router.get('/article',(req,res)=>{
     res.render('article')
-    //commonRes('article', req, res)
 })
-
-
 
 router.get('/chatting',(req,res)=>{
-    res.render('chatting')
-    //commonRes('chatting', req, res)
+    res.render('chatting',{
+        chatting_name: req.session.member_id
+    })
 })
-
-/*
-router.get('/mystore',(req,res)=>{
-    commonRes('mystore', req, res)
-})
-*/
-/*
-router.get('/boards/:board_no',(req,res)=>{
-    commonRes('product', req, res)
-})
-*/
 router.get('/review',(req,res)=>{
     res.render('review')
-    //commonRes('review', req, res)
 })
 router.get('/sellpage',(req,res)=>{
     res.render('sellpage')
-    //commonRes('sellpage', req, res)
 })
 router.get('/setting',(req,res)=>{
     res.render('setting')
-    //commonRes('setting', req, res)
 })
 router.get('/signin',(req,res)=>{
     res.render('signin')
-    //commonRes('signin', req, res)
 })
 router.get('/signup',(req,res)=>{
     res.render('signup')
-    //commonRes('signup', req, res)
 })
+
 
 module.exports = router
