@@ -23,6 +23,7 @@ app.use(session({
 var mnt = new Array()
 var sort, search, sortSearch
 exports.pagination = function (req, res) {
+    console.log("?")
     if (req.query.search) {
         search = "where title like '%" + req.query.search + "%' or content like '%" + req.query.search + "%'"
     }

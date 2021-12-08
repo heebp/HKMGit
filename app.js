@@ -35,8 +35,8 @@ var chat = io.of('/chat').on('connection', function(socket) {
     });
 });
 
-server.listen(3000, function() {
-    console.log('Socket IO server listening on port 3000');
+server.listen(12345, function() {
+    console.log('Socket IO server listening on port 12345');
 });
 
 
