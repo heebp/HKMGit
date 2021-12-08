@@ -28,13 +28,17 @@
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-10">
-          <h2 class="h2 mt-5 mb-5 page-title"><%= member_id %>님의 어서오세요!</h2> 
+          <h2 class="h2 mt-5 mb-5 page-title"><%= member_id %>님의 상점</h2> 
           <div class="mt-2">
               <form>
                   <div class="row mt-3 justify-content-start">
                       <div class="col-3 mb-2">
                           <div class="avatar">
-                              <img src="<%= mystore_data[0].store_image %>" alt="..." class="avatar-img rounded-circle" />
+                            <% if(mystore_data[0].store_image) {%>
+                            <img src="https://static.nid.naver.com/images/web/user/default.png" width="100%" alt="..." class="avatar-img rounded-circle" />
+                            <% } else { %> 
+                            <img src="<%= mystore_data[0].store_image %>" alt="..." class="avatar-img rounded-circle" />
+                          <% } %>
                           </div>
                       </div>
                       <div class="col-4 mt-4 mb-3">

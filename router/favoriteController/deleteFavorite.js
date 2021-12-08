@@ -9,10 +9,7 @@ exports.deleteFavorite = function (req, res) {
     favoriteContent={
         "board_no" : req.params.board_no,
         "member_id" : req.params.member_id,
-    //"board_no" : req.body.board_no
-
     }
-    
     new FavoriteModel().deleteFavoriteByBoardNo(favoriteContent,(error,results)=>{
         if (error) {
             console.log("error ocurred", error);
