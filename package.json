@@ -34,6 +34,8 @@
     "nodemon": "^2.0.15",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
-    "session-file-store": "^1.5.0"
+    "pinch-zoom-js": "^2.3.4",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.4.0"
   }
 }
