@@ -16,10 +16,15 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-app.get('/chatting', function(req, res) {
-    res.render(__dirname + '/views/chatting.ejs');
-});
 
+
+io.on('connection', (socket) => {
+    require("./router/chattingController/chatting")(socket, io)
+    
+
+    //return io
+});
+/*
 // namespace /chat에 접속한다.
 var chat = io.of('/chat').on('connection', function(socket) {
     socket.on('chat message', function(data) {
@@ -34,7 +39,7 @@ var chat = io.of('/chat').on('connection', function(socket) {
         chat.to(room).emit('chat message', data.msg);
     });
 });
-
+*/
 server.listen(12345, function() {
     console.log('Socket IO server listening on port 12345');
 });

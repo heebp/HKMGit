@@ -11,7 +11,6 @@ var server = require('http').createServer(app);
 exports.chatting = function(req, res) {
     var io = require('socket.io')(server);
 
-    res.render('chatting')
 
     // namespace /chat에 접속한다.
     io.on('connection', function(socket) {

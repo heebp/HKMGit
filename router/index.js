@@ -8,8 +8,8 @@ const MySQLStore = require("express-mysql-session")(session);
 const cookieParser = require('cookie-parser');
 app.use(express.urlencoded({ extended: true }) );
 app.use(express.json() );
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var signup= require('./authController/signup')
 var signin= require('./authController/signin')
 var signout= require('./authController/signout')
@@ -100,7 +100,7 @@ router.get('/article',(req,res)=>{
 
 router.get('/chatting',(req,res)=>{
     res.render('chatting',{
-        chatting_name: req.session.member_id
+        name: req.session.member_id
     })
 })
 router.get('/review',(req,res)=>{

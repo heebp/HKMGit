@@ -30,11 +30,6 @@ exports.review = function (req, res) {
             })
         } else {
             console.log('The solution is: ', results);
-            /*res.send({
-                "code": 200,
-                "success": "user registered sucessfully"
-            });
-            */
             res.redirect("main")
         }
     });    

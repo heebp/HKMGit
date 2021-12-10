@@ -23,14 +23,14 @@ module.exports = (socket, io) => {
   socket.on('leaveRoom', async (num, name) => {
     await socket.leave(room[num])
     console.log(name + ' leave a ' + room[num]);
-    io.to(room[num]).emit('leaveRoom1', num, name);
+    io.to(room[num]).emit('leaveRoom1', name);
   });
 
 
   socket.on('joinRoom', async (num, name) => {
     await socket.join(room[num])
     console.log(name + ' join a ' + room[num]);
-    io.to(room[num]).emit('joinRoom1', num, name);
+    io.to(room[num]).emit('joinRoom1', name);
   });
 
 
