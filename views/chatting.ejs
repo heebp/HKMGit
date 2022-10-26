@@ -80,6 +80,11 @@
                                             <div id="chatHeader">채팅방<%= chat_no %></div>
                                             <div id="box">
                                                 <div id="scrolldiv" style="float:left;width:80%;height:250px; margin-top:20px; overflow: auto;">
+                                                    <div id="old_conversation">
+                                                        <% for(var i = 0; i < old_message.length; i++){ %>
+                                                            <%=old_message[i].chat_id %>: </b><%=old_message[i].message %> <br>
+                                                        <% } %>
+                                                    </div>
                                                     <div id="conversation"></div>
                                                 </div>
                                                 <div style="float:left;width:20%;height:250px;">

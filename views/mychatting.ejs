@@ -13,8 +13,8 @@
             chatroom
         </div>
         <% for(var i =0; i < data.length; i++){ %>
-        <h2 onclick = "location.href = '/chatting/<%= data[i].chat_no %>' ">방 : <%= data[i].title %></h2>
-        <p>판매자 : <%= data[i].member_id %></p>
+            <h2 onclick = "location.href = '/chatting/<%= data[i].chat_no %>' ">방 : <%= data[i].title %></h2>
+            <p>판매자 : <%= data[i].member_id %></p>
         <% } %>
 
     </div>
