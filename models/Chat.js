@@ -22,16 +22,10 @@ class Chat{
     }
     getChattingInfo = (chat_no,callback) =>{
         var sql = `select board.member_id as seller, chat.member_id as buyer from chat join board on board_board_no = board_no where chat_no = ${chat_no};`
+        +`select chat_no,chat_id,message,chat.date,member_id,board_board_no from message join chat on chat_chat_no = chat_no where chat_no =${chat_no};`;
         db.query(sql,callback)
     }
-    getChatMessage = (chat_no,callback) => {
-        var sql = `select chat_no,chat_id,message,chat.date,member_id,board_board_no from message join chat on chat_chat_no = chat_no where chat_no =${chat_no};`;
-        db.query(sql,callback)
-    }
-    createChatMessage = (messageContent, callback) => {
-        var sql = `insert into  ${table} values(${messageContent.chat_no}, ${messageContent.chat_id}, ${messageContent.message},${messageContent.date}) `;
-        db.query(sql,callback)
-    }
+
 
 }
 module.exports = Chat
